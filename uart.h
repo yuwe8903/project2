@@ -13,6 +13,9 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+/*Define two new macro function to enable/disable interrupts*/
+#define START_CRITICAL(x) (NVIC_EnableIRQ(x))
+#define END_CRITICAL(x) (NVIC_DisableIRQ(x))
 /*BAUD RATE macro*/
 #define BAUD_RATE (38400)
 //#define CLOCK_SETUP (1)
@@ -33,16 +36,8 @@
 
 /*UART0 control registers mask macro*/
 #define UART_LSB_MASK (0xDF)  //clear bit 5 to 0 using &, in UART0_S2
-/*
-#define UART_NO_PARITY_MASK (0xFD) //clear bit 2 to 0 using &, in UART0_C1
-#define UART_ILT_BIT_MASK (0xFB)   //clear bit 3 to 0 using &, in UART0_C1
-#define UART_WAKE_BIT_MASK (0xF7)  //clear bit 4 to 0 using &, in UART0_C1
-#define UART_8BIT_MASK (0xEF)      //clear bit 5 to 0 using &, in UART0_C1
-#define UART_RSRC_BIT_MASK (0xDF)  //clear bit 6 to 0 using &, in UART0_C1
-#define UART_DOZEEN_BIT_MASK (0xBF)//clear bit 7 to 0 using &, in UART0_C1
-#define UART_LOOPS_BIT_MASK (0x7F) //clear bit 8 to 0 using &, in UART0_C1
-*/
 #define UART_STOP_BIT_MASK (0xDF)  //clear bit 5 to 0 using &, in UART0_BDH
+
 
 /*********************************************************
 * void UART_configure() - This function will configure
