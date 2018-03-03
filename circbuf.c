@@ -8,7 +8,6 @@
 *************************************************************/
 #include <circbuf.h>
 #include <stdint.h>
-//CB_t * buf = CB_init(10);
 CB_e CB_init(CB_t * cbuf, size_t length)
 {
 	cbuf->base = (uint8_t *) malloc(length*sizeof(cbuf));
