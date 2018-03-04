@@ -1,6 +1,6 @@
 #include <stdarg.h>
+#include <setjmp.h>
 #include <cmocka.h>
-#include <stdint.h>
 #include "memory.h"
 #define PASS (0)
 #define FAILED (1)
@@ -19,14 +19,14 @@ int8_t memmove_tests(void)
   uint8_t * dst_prt3 = arry[2] + 2;   /*destination pointer3 overlap the end 
 				      of destination and start of source  */
   uint8_t * src_prt1 = arry[0] + 8;   /*source pointer to the first column*/
-  if(src_ptr1 == NULL || dst_prt1==NULL)
+  if(src_prt1 == NULL || dst_prt1==NULL)
   {
      return FAILED;
   }
   my_memmove(src_prt1, dst_prt1, move_length);/*test No Overlap*/
   
   src_prt1 = arry[1] + 8;		/*source pointer to the second column*/
-  if(src_ptr1 == NULL || dst_prt2==NULL)
+  if(src_prt1 == NULL || dst_prt2==NULL)
   {
      return FAILED;
   }
@@ -34,7 +34,7 @@ int8_t memmove_tests(void)
 						and the end of source*/
  
   src_prt1 = arry[2] + 8;		/*source pointer to the third column*/
-  if(src_ptr1 == NULL || dst_prt3==NULL)
+  if(src_prt1 == NULL || dst_prt3==NULL)
   {
      return FAILED;
   }
@@ -48,7 +48,7 @@ int8_t memset_tests(void)
   /*declare an array and a pointer to test my_memset and my_memzero*/
   uint8_t arry1[SIZE] = {15, 19, 14, 13, 11, 2};
   uint8_t * prt1 = arry1;
-  if(ptr1 == NULL)
+  if(prt1 == NULL)
   {
      return FAILED;
   }
@@ -61,7 +61,7 @@ int8_t memzero_tests(void)
 { 
   uint8_t arry1[SIZE] = {15, 19, 14, 13, 11, 2};
   uint8_t * prt1 = arry1;
-  if(ptr1 == NULL)
+  if(prt1 == NULL)
   {
      return FAILED;
   }
@@ -70,10 +70,6 @@ int8_t memzero_tests(void)
 }
 int8_t reverse_tests(void)
 {
-  if(ptr == NULL)
-  {
-     return FAILED;
-  }
    /*declare an array and a pointer to test my_reverse*/
   uint8_t arry1_reverse[SIZE] = {15, 19, 14, 13, 11, 2};
   uint8_t arry2_reverse[SIZE-1] = {1, 20, 135, 2, 43};
