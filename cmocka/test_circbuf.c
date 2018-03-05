@@ -31,6 +31,6 @@ int8_t main(void)
   const struct CMUnitTest test[]={  
     cmocka_unit_test(CB_tests),
   };
-  return cmocka_run_group_tests(tests, NULL, NULL);
+  return cmocka_run_group_tests(test);
 }
 

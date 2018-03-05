@@ -1,6 +1,7 @@
 #include <stdarg.h>
 #include <setjmp.h>
 #include <cmocka.h>
+#include <stddef.h>
 #include "memory.h"
 #define PASS (0)
 #define FAILED (1)
@@ -89,12 +90,12 @@ int8_t reverse_tests(void)
 
 int8_t main(void)
 {
-  const struct CMUnitTest test[]={
+  const struct UnitTest test[]={
      cmocka_unit_test(memmove_tests),
      cmocka_unit_test(memset_tests),
      cmocka_unit_test(memzero_tests),
      cmocka_unit_test(reverse_tests),
   };
-  return cmocka_run_group_tests(tests, NULL, NULL);
+  return cmocka_run_group_tests(test);
 }
 

@@ -40,6 +40,6 @@ int8_t main(void)
      cmocka_unit_test(atpi_tests),
      cmocka_unit_test(itoa_tests),
   };
-  return cmocka_run_group_tests(tests, NULL, NULL);
+  return cmocka_run_group_tests(test);
 }
 
